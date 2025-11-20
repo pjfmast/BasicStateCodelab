@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -33,8 +35,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
     buildFeatures {
         compose = true
@@ -59,6 +63,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
     // added for step 10. Work with lists:
+    // But see: https://developer.android.com/jetpack/androidx/releases/compose-material3#compose_material3_version_14_2
     implementation(libs.androidx.compose.material.icons.core)
     // for step 12. State in ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)

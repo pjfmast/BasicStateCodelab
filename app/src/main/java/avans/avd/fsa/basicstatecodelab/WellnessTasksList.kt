@@ -3,7 +3,6 @@ package avans.avd.fsa.basicstatecodelab
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 
 @Composable
@@ -23,8 +22,8 @@ fun WellnessTasksList(
              * instead of using the default key (list position). This prevents unnecessary
              * recompositions.
              */
-            key = { task -> task.id }
-        ) { task ->
+            key = { task: WellnessTask -> task.id }
+        ) { task: WellnessTask ->
             WellnessTaskItem(
                 taskName = task.label,
                 checked = task.checked,
